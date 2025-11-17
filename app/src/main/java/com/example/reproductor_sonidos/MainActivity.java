@@ -40,13 +40,9 @@ public class MainActivity extends AppCompatActivity {
         tTiempo = findViewById(R.id.tTiempo);
         tDuracion = findViewById(R.id.tDuracion);
 
-        // Botón Play
         btnPlay.setOnClickListener(view -> mediaPlayer.start());
-
-        // Botón Pause
         btnPause.setOnClickListener(view -> mediaPlayer.pause());
 
-        // Obtener duración cuando el MediaPlayer esté preparado
         mediaPlayer.setOnPreparedListener(mp -> {
             seekBar.setMax(mediaPlayer.getDuration());
 
@@ -57,35 +53,41 @@ public class MainActivity extends AppCompatActivity {
             tTiempo.setText("00:00");
         });
 
-        // Iniciar actualización del tiempo
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (fromUser) {
+                    mediaPlayer.seekTo(progress);
+                }
+            }
+            @Override public void onStartTrackingTouch(SeekBar seekBar) {}
+            @Override public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
         handler.post(actualizar);
     }
-
-    // Actualiza el progreso cada segundo
     private Runnable actualizar = new Runnable() {
         @Override
         public void run() {
             if (mediaPlayer != null) {
                 seekBar.setProgress(mediaPlayer.getCurrentPosition());
 
-                // Pongo el tiempo en el TextView
                 int minutos = mediaPlayer.getCurrentPosition() / 1000 / 60;
                 int segundos = mediaPlayer.getCurrentPosition() / 1000 % 60;
-                String tiempo = String.format("%02d:%02d", minutos, segundos);
-                tTiempo.setText(tiempo);
+                tTiempo.setText(String.format("%02d:%02d", minutos, segundos));
 
                 handler.postDelayed(this, 1000);
             }
         }
     };
-
+    //Me lo ha puesto chat porque me daba fallo
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (mediaPlayer != null) {
+            handler.removeCallbacks(actualizar);
             mediaPlayer.release();
             mediaPlayer = null;
         }
-        handler.removeCallbacks(actualizar);
     }
 }
