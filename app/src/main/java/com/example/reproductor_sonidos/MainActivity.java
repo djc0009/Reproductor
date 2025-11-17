@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer;
-    private MediaPlayer mp1, mp2, mp3, mp4; // ← 4 sonidos
+    private MediaPlayer mp1, mp2, mp3, mp4;
     private SeekBar seekBar;
     private TextView tTiempo, tDuracion;
     private Handler handler = new Handler();
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mediaPlayer = MediaPlayer.create(this, R.raw.caillou);
-        
+
         Button btnPlay = findViewById(R.id.bPlay);
         Button btnPause = findViewById(R.id.bPause);
         Button sonido1 = findViewById(R.id.bSonido1);
