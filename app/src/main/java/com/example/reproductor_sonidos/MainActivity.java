@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-
+    //Me lo ha dicho chatgpt porque me daba fallo
     @Override
     protected void onDestroy() {
         super.onDestroy();
