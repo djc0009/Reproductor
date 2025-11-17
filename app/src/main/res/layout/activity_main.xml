@@ -63,20 +63,56 @@
         android:id="@+id/tTiempo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00:00"
-        android:textSize="16sp"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/sBar"
-        app:layout_constraintStart_toStartOf="@+id/sBar" />
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/sBar"
+        app:layout_constraintTop_toBottomOf="@+id/sBar" />
 
     <TextView
         android:id="@+id/tDuracion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00:00"
-        android:textSize="16sp"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/sBar"
-        app:layout_constraintEnd_toEndOf="@+id/sBar" />
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/sBar"
+        app:layout_constraintTop_toBottomOf="@+id/sBar" />
+
+    <Button
+        android:id="@+id/bSonido1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="116dp"
+        android:text="sonido1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tTiempo" />
+
+    <Button
+        android:id="@+id/bSonido2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="148dp"
+        android:text="sonido2"
+        app:layout_constraintStart_toEndOf="@+id/bSonido1"
+        app:layout_constraintTop_toBottomOf="@+id/sBar" />
+
+    <Button
+        android:id="@+id/bSonido3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="148dp"
+        android:text="sonido3"
+        app:layout_constraintStart_toEndOf="@+id/bSonido2"
+        app:layout_constraintTop_toBottomOf="@+id/sBar" />
+
+    <Button
+        android:id="@+id/bSonido4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:text="sonido4"
+        app:layout_constraintStart_toEndOf="@+id/bSonido3"
+        app:layout_constraintTop_toBottomOf="@+id/tDuracion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
